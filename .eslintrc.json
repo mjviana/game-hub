@@ -29,6 +29,7 @@
         "react/function-component-definition": "off",
         "react-hooks/exhaustive-deps": "off",
         "import/no-cycle": "off",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "react/no-children-prop": "off"
     }
 }
