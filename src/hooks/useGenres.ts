@@ -18,6 +18,5 @@ const useGenres = () => {
     initialData: { count: genres.length, results: genres }
   });
 };
-// { data: genres, isLoading: false, error: null });
 
 export default useGenres;

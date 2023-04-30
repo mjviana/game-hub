@@ -3,7 +3,6 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
 import ApiClient, { FetchResponse } from '../services/api-client';
 import { Platform } from './usePlatforms';
-
 const apiClient = new ApiClient<Game>('/games');
 export interface Game {
   id: number;
