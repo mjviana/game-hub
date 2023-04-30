@@ -1,9 +1,10 @@
 // eslint-disable-next-line import/no-cycle
 import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
-import apiClient, { FetchResponse } from '../services/api-client';
+import ApiClient, { FetchResponse } from '../services/api-client';
 import { Platform } from './usePlatforms';
 
+const apiClient = new ApiClient<Game>('/games');
 export interface Game {
   id: number;
   name: string;
@@ -13,23 +14,18 @@ export interface Game {
   rating_top: number;
 }
 
-const fetchGames = (gameQuery: GameQuery) => {
-  return apiClient
-    .get<FetchResponse<Game>>('/games', {
-      params: {
-        genres: gameQuery.genre?.id,
-        parent_platforms: gameQuery.platform?.id,
-        ordering: gameQuery.sortOrder,
-        search: gameQuery.searchText
-      }
-    })
-    .then((res) => res.data);
-};
-
 const useGames = (gameQuery: GameQuery) =>
   useQuery<FetchResponse<Game>, Error>({
     queryKey: ['games', gameQuery],
-    queryFn: () => fetchGames(gameQuery)
+    queryFn: () =>
+      apiClient.getAll({
+        params: {
+          genres: gameQuery.genre?.id,
+          parent_platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sortOrder,
+          search: gameQuery.searchText
+        }
+      })
   });
 
 export default useGames;
