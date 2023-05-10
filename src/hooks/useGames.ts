@@ -4,10 +4,12 @@ import ms from 'ms';
 import ApiClient, { FetchResponse } from '../services/api-client';
 import useGameQueryStore from '../store';
 import { Platform } from './usePlatforms';
+
 const apiClient = new ApiClient<Game>('/games');
 export interface Game {
   id: number;
   name: string;
+  slug: string;
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
