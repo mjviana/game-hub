@@ -1,5 +1,6 @@
 import ApiClient from '../services/api-client';
-import usePlatforms, { Platform } from './usePlatforms';
+import usePlatforms from './usePlatforms';
+import { Platform } from '../entities/Platform';
 
 const apiClient = new ApiClient<Platform>('/platforms/');
 
