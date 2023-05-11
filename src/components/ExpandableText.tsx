@@ -16,7 +16,7 @@ export const ExpandableText = ({ children }: Props) => {
   const textToDisplay = expanded ? children : children.substring(0, limit) + '...';
 
   return (
-    <Text>
+    <Text marginY={5}>
       {textToDisplay}
       <Button
         size={'xs'}
