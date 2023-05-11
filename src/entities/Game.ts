@@ -13,4 +13,6 @@ export interface Game {
   publishers: Publisher[];
   metacritic: number;
   rating_top: number;
+  trailerPreview: string;
+  data: object;
 }
